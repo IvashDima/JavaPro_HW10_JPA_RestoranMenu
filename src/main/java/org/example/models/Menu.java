@@ -5,9 +5,9 @@ import javax.persistence.*;
 @Entity
 @Table(name = "Menus")
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE) // default
-@DiscriminatorColumn(name = "Discount",
+@DiscriminatorColumn(name = "Type",
         discriminatorType = DiscriminatorType.STRING)
-@DiscriminatorValue(value = "true")
+@DiscriminatorValue(value = "Normal")
 public class Menu {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -22,7 +22,7 @@ public class Menu {
 
     public Menu() {}
 
-    public Menu(String dishName, double price, int weight){
+    public Menu(String dishName, double price, int weight){ //
         this.dishName = dishName;
         this.price = price;
         this.weight = weight;
