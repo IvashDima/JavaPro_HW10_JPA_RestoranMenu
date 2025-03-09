@@ -17,4 +17,12 @@ public class MenuDAO extends AbstractDAO<Menu>{
         List<Menu> res = query.getResultList();
         return res;
     }
+
+    public List<Menu> viewMenuToKg() {
+        TypedQuery<Menu> query = em.createQuery(
+                "SELECT m FROM Menu m WHERE m.weight < : w", Menu.class);
+        query.setParameter("w", 1000);
+        List<Menu> res = query.getResultList();
+        return res;
+    }
 }

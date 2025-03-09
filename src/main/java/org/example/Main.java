@@ -43,6 +43,7 @@ public class Main {
                         showAllDiscountMenu(discountMenuDAO);
                         break;
                     case "5":
+                        showMenuToKg(menuDAO);
                         break;
                     case "0":
                         return;
@@ -55,6 +56,7 @@ public class Main {
             System.out.println("End of program!");
         }
         menuDAO.close();
+        discountMenuDAO.close();
         AbstractDAO.closeFactory();
     }
     private static void addDishToMenu(MenuDAO menuDAO, Scanner sc) {
@@ -97,14 +99,14 @@ public class Main {
 
     private static void insertRandomMenu(MenuDAO menuDAO) {
         for (int i = 0; i < 3; i++) {
-            Menu menu = new Menu(randomName(), RND.nextInt(10,100), RND.nextInt(100,500));
+            Menu menu = new Menu(randomName(), RND.nextInt(10,100), RND.nextInt(200,1200));
             menuDAO.add(menu);
             System.out.println("Dish was added: " + menu);
         }
     }
     private static void insertRandomDiscountMenu(DiscountMenuDAO discMenuDAO) {
         for (int i = 0; i < 3; i++) {
-            DiscountMenu discMenu = new DiscountMenu(randomName(), RND.nextInt(10,100), RND.nextInt(100,500), RND.nextInt(10,30));
+            DiscountMenu discMenu = new DiscountMenu(randomName(), RND.nextInt(10,100), RND.nextInt(200,1200), RND.nextInt(10,30));
             discMenuDAO.add(discMenu);
             System.out.println("Dish was added: " + discMenu);
         }
@@ -127,6 +129,12 @@ public class Main {
     private static void showAllDiscountMenu(DiscountMenuDAO discountMenuDAO) {
         List<DiscountMenu> discDishes = discountMenuDAO.viewAllDiscountMenu();
         for (DiscountMenu m: discDishes)
+            System.out.println(m);
+    }
+
+    private static void showMenuToKg(MenuDAO menuDAO) {
+        List<Menu> dishes = menuDAO.viewMenuToKg();
+        for (Menu m: dishes)
             System.out.println(m);
     }
 

@@ -27,9 +27,9 @@ public class DiscountMenu extends Menu{
         return "DiscountMenu{id=" + getId() +
                 ", dishName='" + getDishName() + '\'' +
                 ", price=" + getPrice() +
-                ", weight=" + getWeight() +
-                ", percentDiscount=" + percentDiscount +
-                "}";
+                " euro, weight=" + getWeight() +
+                " gram, percentDiscount=" + percentDiscount +
+                " %}";
 //                super.toString().replace("}","") +
 //                ", percent of discount="+percentDiscount+
 //                "}";
