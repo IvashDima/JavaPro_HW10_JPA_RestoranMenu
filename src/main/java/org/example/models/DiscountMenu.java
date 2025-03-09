@@ -8,6 +8,7 @@ import javax.persistence.Entity;
 public class DiscountMenu extends Menu{
 
     private double percentDiscount;
+
     public DiscountMenu() {}
     public DiscountMenu(String dishName, double price, int weight, double percentDiscount){
         super(dishName, price, weight);
@@ -19,5 +20,18 @@ public class DiscountMenu extends Menu{
     }
     public void setPercentDiscount(double percentDiscount) {
         this.percentDiscount = percentDiscount;
+    }
+
+    @Override
+    public String toString(){
+        return "DiscountMenu{id=" + getId() +
+                ", dishName='" + getDishName() + '\'' +
+                ", price=" + getPrice() +
+                ", weight=" + getWeight() +
+                ", percentDiscount=" + percentDiscount +
+                "}";
+//                super.toString().replace("}","") +
+//                ", percent of discount="+percentDiscount+
+//                "}";
     }
 }
