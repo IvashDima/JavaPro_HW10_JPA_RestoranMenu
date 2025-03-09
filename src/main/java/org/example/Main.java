@@ -37,7 +37,7 @@ public class Main {
                         addDishToDiscountMenu(discMenuDAO, sc);
                         break;
                     case "3":
-                        menuDAO.viewAll(Menu.class);
+                        showMenuByPrice(menuDAO, sc);
                         break;
                     case "4":
                         break;
@@ -107,6 +107,20 @@ public class Main {
             discMenuDAO.add(discMenu);
             System.out.println("Dish was added: " + discMenu);
         }
+    }
+
+    private static void showMenuByPrice(MenuDAO menuDAO, Scanner sc) {
+        System.out.print("Enter price From: ");
+        String sPriceFrom = sc.nextLine();
+        double priceFrom = Double.parseDouble(sPriceFrom);
+
+        System.out.print("Enter price To: ");
+        String sPriceTo = sc.nextLine();
+        double priceTo = Double.parseDouble(sPriceTo);
+
+        List<Menu> dishes = menuDAO.viewMenuByPrice(priceFrom, priceTo);
+        for (Menu m: dishes)
+            System.out.println(m);
     }
 
     static final String[] NAMES = {"Potato", "Steak", "Pizza", "Pasta", "Lazania", "Salat Cezar"};
