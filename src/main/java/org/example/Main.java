@@ -12,10 +12,10 @@ public class Main {
     public static void main(String[] args) {
         System.out.println("Start of program!");
         MenuDAO menuDAO = new MenuDAO();
-        DiscountMenuDAO discMenuDAO = new DiscountMenuDAO();
+        DiscountMenuDAO discountMenuDAO = new DiscountMenuDAO();
 
         insertRandomMenu(menuDAO);
-        insertRandomDiscountMenu(discMenuDAO);
+        insertRandomDiscountMenu(discountMenuDAO);
 
         Scanner sc = new Scanner(System.in);
         try{
@@ -34,12 +34,13 @@ public class Main {
                         addDishToMenu(menuDAO, sc);
                         break;
                     case "2":
-                        addDishToDiscountMenu(discMenuDAO, sc);
+                        addDishToDiscountMenu(discountMenuDAO, sc);
                         break;
                     case "3":
                         showMenuByPrice(menuDAO, sc);
                         break;
                     case "4":
+                        showAllDiscountMenu(discountMenuDAO);
                         break;
                     case "5":
                         break;
@@ -60,11 +61,11 @@ public class Main {
         System.out.print("Enter dish name: ");
         String dishName = sc.nextLine();
 
-        System.out.print("Enter price: ");
+        System.out.print("Enter price, euro: ");
         String sPrice = sc.nextLine();
         double price = Double.parseDouble(sPrice);
 
-        System.out.print("Enter weight: ");
+        System.out.print("Enter weight, gram: ");
         String sWeight = sc.nextLine();
         int weight = Integer.parseInt(sWeight);
 
@@ -77,11 +78,11 @@ public class Main {
         System.out.print("Enter name of the discount dish: ");
         String dishName = sc.nextLine();
 
-        System.out.print("Enter price: ");
+        System.out.print("Enter price, euro: ");
         String sPrice = sc.nextLine();
         double price = Double.parseDouble(sPrice);
 
-        System.out.print("Enter weight: ");
+        System.out.print("Enter weight, gram: ");
         String sWeight = sc.nextLine();
         int weight = Integer.parseInt(sWeight);
 
@@ -120,6 +121,12 @@ public class Main {
 
         List<Menu> dishes = menuDAO.viewMenuByPrice(priceFrom, priceTo);
         for (Menu m: dishes)
+            System.out.println(m);
+    }
+
+    private static void showAllDiscountMenu(DiscountMenuDAO discountMenuDAO) {
+        List<DiscountMenu> discDishes = discountMenuDAO.viewAllDiscountMenu();
+        for (DiscountMenu m: discDishes)
             System.out.println(m);
     }
 
